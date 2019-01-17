@@ -14,8 +14,8 @@ import (
 
 	"github.com/russross/blackfriday"
 
-	"github.com/gogits/gogs/pkg/tool"
-	"github.com/gogits/gogs/pkg/setting"
+	"github.com/gogs/gogs/pkg/setting"
+	"github.com/gogs/gogs/pkg/tool"
 )
 
 // IsMarkdownFile reports whether name looks like a Markdown file based on its extension.
@@ -116,7 +116,7 @@ func (options *MarkdownRenderer) ListItem(out *bytes.Buffer, text []byte, flags 
 	options.Renderer.ListItem(out, text, flags)
 }
 
-// RawMarkdown renders Markdown to HTML without handling special links.
+// RawMarkdown renders content in Markdown syntax to HTML without handling special links.
 func RawMarkdown(body []byte, urlPrefix string) []byte {
 	htmlFlags := 0
 	htmlFlags |= blackfriday.HTML_SKIP_STYLE

@@ -11,7 +11,7 @@ import (
 
 type Authentication struct {
 	ID                int64
-	Type              int    `binding:"Range(2,5)"`
+	Type              int    `binding:"Range(2,6)"`
 	Name              string `binding:"Required;MaxSize(30)"`
 	Host              string
 	Port              int
@@ -26,7 +26,13 @@ type Authentication struct {
 	AttributesInBind  bool
 	Filter            string
 	AdminFilter       string
+	GroupEnabled      bool
+	GroupDN           string
+	GroupFilter       string
+	GroupMemberUID    string
+	UserUID           string
 	IsActive          bool
+	IsDefault         bool
 	SMTPAuth          string
 	SMTPHost          string
 	SMTPPort          int
@@ -35,6 +41,7 @@ type Authentication struct {
 	TLS               bool
 	SkipVerify        bool
 	PAMServiceName    string
+	GitHubAPIEndpoint string `form:"github_api_endpoint" binding:"Url"`
 }
 
 func (f *Authentication) Validate(ctx *macaron.Context, errs binding.Errors) binding.Errors {
